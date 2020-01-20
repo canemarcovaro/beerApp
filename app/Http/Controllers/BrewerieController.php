@@ -26,7 +26,7 @@ class BrewerieController extends Controller
     public function edit($id,Request $request){
         
         $brewery = $this->get($id);
-        $brewery->fill($request->all()->save());
+        $brewery->fill($request->all())->save();
         return $brewery; 
     }
 }

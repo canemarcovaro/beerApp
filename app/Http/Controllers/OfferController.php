@@ -9,24 +9,24 @@ class OfferController extends Controller
 {
     public function getAll(){
        
-        $breweries = Brewerie::all();
-        return $breweries;
+        $offers = Offer::all();
+        return $offers;
     }
 
     public function add(Request $request){
-    $brewery = Brewerie::create($request->all());
-    return $brewery;
+    $offer = Offer::create($request->all());
+    return $offer;
     }
 
     public function get($id){
-    $brewery = Brewerie::find($id);
-    return $brewery;
+    $offer = Offer::find($id);
+    return $offer;
     }
 
     public function edit($id,Request $request){
         
-        $brewery = $this->get($id);
-        $brewery->fill($request->all()->save());
-        return $brewery; 
+        $offer = $this->get($id);
+        $offer->fill($request->all())->save();
+        return $offer;
     }
 }
