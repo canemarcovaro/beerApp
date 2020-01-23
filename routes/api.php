@@ -30,3 +30,15 @@ Route::get('offers','OfferController@getAll')->name('getAllOffers');
 Route::post('offers','OfferController@add')->name('addOffer');
 Route::get('offers/{id}','OfferController@get')->name('getOffer');
 Route::post('offers/{id}','OfferController@edit')->name('editOffer');
+
+//Rutas de auth.
+
+Route::group(['prefix' => 'auth'], function () {
+    Route::post('login', 'AuthController@login');
+    Route::post('signup', 'AuthController@signup');
+  
+    Route::group(['middleware' => 'auth:api'], function() {
+        Route::get('logout', 'AuthController@logout');
+        Route::get('user', 'AuthController@user');
+    });
+});
