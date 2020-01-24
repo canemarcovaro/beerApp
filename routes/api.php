@@ -15,7 +15,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 //Rutas para las Cervecerias.
-Route::group(['middleware' => 'auth:api'], function() {
+Route::group(['middleware' => ['auth:api','scope:add-brewery']], function() {
     
 Route::get('breweries','BrewerieController@getAll')->name('getAllBreweries');
 Route::post('breweries','BrewerieController@add')->name('addBreweries');

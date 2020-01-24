@@ -39,15 +39,41 @@ class AuthController extends Controller
                 'message' => 'Unauthorized'], 401);
         }
         $user = $request->user();
+
+        //Busco el rol del determinado usuario, para luego agregar el scope a su token.
+
+        $role = $user->role;
+        
+        
+      /*  else{
+
+            $request->request->add([
+                'scope' => 'add-brewery'
+            ]);
+
+        }*/
+
         $tokenResult = $user->createToken('Personal Access Token');
         $token = $tokenResult->token;
         if ($request->remember_me) {
             $token->expires_at = Carbon::now()->addWeeks(1);
         }
+        if($role == "breweryOwner"){
+          
+           $token->scopes = ['add-brewery'];
+  
+          }
         $token->save();
+
+        
+
+       
+
+
         return response()->json([
             'access_token' => $tokenResult->accessToken,
             'token_type'   => 'Bearer',
+            'scopes' => $token->scopes,
             'expires_at'   => Carbon::parse(
                 $tokenResult->token->expires_at)
                     ->toDateTimeString(),
