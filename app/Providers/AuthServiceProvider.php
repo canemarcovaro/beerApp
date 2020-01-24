@@ -25,7 +25,9 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies();
         Passport::routes();
- 
-        //
+        Passport::tokensCan([
+            'add-brewery' => 'Crear cerveceria'
+            
+        ]);
     }
 }
