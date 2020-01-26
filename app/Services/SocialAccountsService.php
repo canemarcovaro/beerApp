@@ -1,11 +1,11 @@
 <?php
 
-namespace App;
+namespace App\Services;
 use App\User;
 use App\LinkedSocialAccount;
 use Laravel\Socialite\Two\User as ProviderUser;
 
-class Services 
+class SocialAccountsService 
 {
      /**
      * Find or create user instance by provider user instance and provider name.
