@@ -29,5 +29,9 @@ return [
         'secret' => env('AWS_SECRET_ACCESS_KEY'),
         'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
     ],
-
+    'google' => [
+        'client_id' => env('125706006978-nc2br5tpc29a9pbcvivdn7ipprkr89o4.apps.googleusercontent.com'),         // Your GitHub Client ID
+        'client_secret' => env('4xJwZZ5mNdY9PdpbjYMiArpZ'), // Your GitHub Client Secret
+        'redirect' => '',
+    ],
 ];
