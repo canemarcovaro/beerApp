@@ -25,4 +25,7 @@ class AppServiceProvider extends ServiceProvider
     {
         //
     }
+    public $bindings = [
+        SocialUserResolverInterface::class => SocialUserResolver::class,
+    ];
 }
