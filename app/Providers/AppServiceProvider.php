@@ -3,6 +3,8 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use App\Services\SocialUserResolver;
+use Coderello\SocialGrant\Resolvers\SocialUserResolverInterface;
 
 class AppServiceProvider extends ServiceProvider
 {
