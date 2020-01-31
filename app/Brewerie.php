@@ -14,4 +14,9 @@ class Brewerie extends Model
     public function offers(){
         return $this->hasMany(Offer::class);
     }
+
+    public function user() {
+        return $this->hasOne(User::class);
+    }
+      
 }
