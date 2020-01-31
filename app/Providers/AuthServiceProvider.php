@@ -26,7 +26,8 @@ class AuthServiceProvider extends ServiceProvider
         $this->registerPolicies();
         Passport::routes();
         Passport::tokensCan([
-            'brewery-owner' => 'Permisos de dueño de cerveceria.'
+            'brewery-owner' => 'Permisos de dueño de cerveceria.',
+            'normal-user' => 'Permisos de usuario normal.',
             
         ]);
     }
