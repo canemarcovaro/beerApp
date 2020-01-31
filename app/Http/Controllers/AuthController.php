@@ -44,15 +44,6 @@ class AuthController extends Controller
 
         $role = $user->role;
         
-        
-      /*  else{
-
-            $request->request->add([
-                'scope' => 'add-brewery'
-            ]);
-
-        }*/
-
         $tokenResult = $user->createToken('Personal Access Token');
         $token = $tokenResult->token;
         if ($request->remember_me) {
@@ -60,15 +51,10 @@ class AuthController extends Controller
         }
         if($role == "breweryOwner"){
           
-           $token->scopes = ['add-brewery'];
+           $token->scopes = ['brewery-owner'];
   
           }
         $token->save();
-
-        
-
-       
-
 
         return response()->json([
             'access_token' => $tokenResult->accessToken,
