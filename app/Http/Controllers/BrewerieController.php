@@ -14,8 +14,23 @@ class BrewerieController extends Controller
     }
 
     public function add(Request $request){
-    $brewery = Brewerie::create($request->all());
+
+    $user = $request->user();
+
+    $userBrewery = Brewerie::where('user_id',$user->id)->first();
+    
+    if($userBrewery){
+        dd("ERROR: SOLO PUEDE CREAR UNA CERCERIA POR CUENTA.");
+     }
+   
+    $brewery = new Brewerie;
+    $brewery->name = $request->name;
+    $brewery->user_id = $user->id;
+    $brewery->claps  = 0;
+    $brewery->save();
+
     return $brewery;
+
     }
 
     public function get($id){

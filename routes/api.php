@@ -28,7 +28,7 @@ Route::group(['prefix' => 'auth'], function () {
 //Rutas de brewery owner.
 Route::group(['middleware' => ['auth:api','scope:brewery-owner']], function() {
 //Rutas para las Cervecerias.
-//ALTA de una cervceria x brewery owner.
+//ALTA de una cerveceria x brewery owner.
 Route::post('breweries','BrewerieController@add')->name('addBreweries');
 //Edit de la cerveceria del brewery owner.
 Route::post('breweries/{id}','BrewerieController@edit')->name('editBreweries');
