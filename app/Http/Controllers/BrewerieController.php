@@ -20,7 +20,7 @@ class BrewerieController extends Controller
     $userBrewery = Brewerie::where('user_id',$user->id)->first();
     
     if($userBrewery){
-        dd("ERROR: SOLO PUEDE CREAR UNA CERCERIA POR CUENTA.");
+        return "ERROR: SOLO PUEDE CREAR UNA CERCERIA POR CUENTA.";
      }
    
     $brewery = new Brewerie;
@@ -39,9 +39,15 @@ class BrewerieController extends Controller
     }
 
     public function edit($id,Request $request){
-        
+
+        $user = $request->user();
         $brewery = $this->get($id);
+       
+        if($user->id != $brewery->user_id){
+         return "ERROR: No puede modificar cerveceria de distinto dueño.";
+        }
         $brewery->fill($request->all())->save();
+
         return $brewery; 
     }
 }
