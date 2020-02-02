@@ -47,6 +47,18 @@ Route::get('offers/{id}','OfferController@get')->name('getOffer');
 
 });
 
+//Rutas de normal User.
+Route::group(['middleware' => ['auth:api','scope:normal-user']], function() {
+    //Rutas para las Cervecerias.
+    //Dar aplauso a una cerveceria.
+    Route::post('breweries/{id}','BrewerieController@addClapToBrewery')->name('addClapToBrewery');
+    //--------------------------------------------------------------------------------------------
+    //Rutas para las Ofertas.
+    //Alta de oferta de una cerveceria (por el momento numero indeterminado).
+    
+    
+    });
+
 /*
 Route::group(['middleware' => 'auth:api'], function() {
     

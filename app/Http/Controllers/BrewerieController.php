@@ -50,4 +50,16 @@ class BrewerieController extends Controller
 
         return $brewery; 
     }
+
+    public function addClapToBrewery($id, Request $request){
+        
+        $brewery = $this->get($id);
+        $breweryClaps = $brewery->claps;
+        $brewery->claps = $breweryClaps + 1;
+        $brewery->save();
+        
+        return $brewery;
+       
+
+    }
 }
