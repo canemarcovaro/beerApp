@@ -22,6 +22,7 @@ class SocialAccountsService
             ->where('provider_id', $providerUser->getId())
             ->first();
         if ($linkedSocialAccount) {
+            
             return $linkedSocialAccount->user;
         } else {
             $user = null;
