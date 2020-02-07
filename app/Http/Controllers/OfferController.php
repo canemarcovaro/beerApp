@@ -13,7 +13,12 @@ class OfferController extends Controller
         $offers = Offer::all();
         return $offers;
     }
-
+    public function getOffersByBrewery($id){
+       
+    $offers = Offer::where('brewery_id',$id)->get();
+    return $offers;
+    
+    }
     public function add(Request $request){
     
     $user = $request->user();
@@ -49,7 +54,7 @@ class OfferController extends Controller
         $offer->name = $request->name;
         $offer->detail = $request->detail;
         $offer->save();
-        
+
         return $offer;
     }
 }

@@ -63,3 +63,4 @@ Route::get('breweries','BrewerieController@getAll')->name('getAllBreweries');
 //Cerveceria por id.
 Route::get('breweries/{id}','BrewerieController@get')->name('getBreweries');
 
+Route::get('offersByBrewery/{id}','OfferController@getOffersByBrewery')->name('getAllOffersByBrewery');
