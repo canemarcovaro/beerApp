@@ -17,7 +17,7 @@ class OfferController extends Controller
     public function add(Request $request){
     
     $user = $request->user();
-    
+
     $brewery = Brewerie::where('user_id',$user->id)->first();
     
     $offer = new Offer;
@@ -36,9 +36,20 @@ class OfferController extends Controller
     }
 
     public function edit($id,Request $request){
-        
+
+        $user = $request->user();
+        $brewery = Brewerie::where('user_id',$user->id)->first();
+
         $offer = $this->get($id);
-        $offer->fill($request->all())->save();
+
+        if($offer->brewery_id != $brewery->id){
+            return "ERROR: No puede modificar esta oferta";
+        }
+
+        $offer->name = $request->name;
+        $offer->detail = $request->detail;
+        $offer->save();
+        
         return $offer;
     }
 }
