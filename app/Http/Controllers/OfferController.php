@@ -57,4 +57,19 @@ class OfferController extends Controller
 
         return $offer;
     }
+    public function deleteOffer($id,Request $request){    
+
+    $user = $request->user();
+    $brewery = Brewerie::where('user_id',$user->id)->first();
+    $offer = Offer::find($id);
+   
+    
+    if($offer->brewery_id != $brewery->id){
+        return "ERROR: No puede elmininar esta oferta.";
+    }
+    $offer->destroy($id);
+
+    return "Oferta eliminada con exito!";
+
+    }
 }

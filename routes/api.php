@@ -39,6 +39,8 @@ Route::post('breweries/{id}','BrewerieController@edit')->name('editBreweries');
 Route::post('offers','OfferController@add')->name('addOffer');
 //Edit de la oferta seleccionada.
 Route::post('offers/{id}','OfferController@edit')->name('editOffer');
+//Delete de oferta eliminada.
+Route::delete('offers/{id}','OfferController@deleteOffer')->name('deleteOffer');
 //Listado de las ofertas.
 Route::get('offers','OfferController@getAll')->name('getAllOffers');
 Route::get('offers/{id}','OfferController@get')->name('getOffer');
