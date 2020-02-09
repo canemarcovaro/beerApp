@@ -62,4 +62,10 @@ class BrewerieController extends Controller
        
 
     }
+    public function getBestBreweries(){
+
+        $breweries = Brewerie::all();
+        $breweries = $breweries->sortByDesc('claps');
+        return $breweries;
+    }
 }

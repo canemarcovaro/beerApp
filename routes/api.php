@@ -62,6 +62,7 @@ Route::group(['middleware' => ['auth:api','scope:normal-user']], function() {
 //Rutas de usuario sin rol. 
 //Listado de todas las cervecerias.
 Route::get('breweries','BrewerieController@getAll')->name('getAllBreweries');
+Route::get('bestbreweries','BrewerieController@getBestBreweries')->name('getBestBreweries');
 //Cerveceria por id.
 Route::get('breweries/{id}','BrewerieController@get')->name('getBreweries');
 
