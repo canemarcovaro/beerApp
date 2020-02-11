@@ -52,6 +52,7 @@ Route::group(['middleware' => ['auth:api','scope:normal-user']], function() {
     //Rutas para las Cervecerias.
     //Dar aplauso a una cerveceria.
     Route::post('breweriesclap/{id}','BrewerieController@addClapToBrewery')->name('addClapToBrewery');
+    Route::delete('breweriesclap/{id}','BrewerieController@deleteClapToBrewery')->name('deleteClapToBrewery');
     //--------------------------------------------------------------------------------------------
     //Rutas para las Ofertas.
     //Alta de oferta de una cerveceria (por el momento numero indeterminado).
@@ -62,7 +63,7 @@ Route::group(['middleware' => ['auth:api','scope:normal-user']], function() {
 //Rutas de usuario sin rol. 
 //Listado de todas las cervecerias.
 Route::get('breweries','BrewerieController@getAll')->name('getAllBreweries');
-Route::get('bestbreweries','BrewerieController@getBestBreweries')->name('getBestBreweries');
+Route::get('bestbreweries','BrewerieController@getBestBre weries')->name('getBestBreweries');
 //Cerveceria por id.
 Route::get('breweries/{id}','BrewerieController@get')->name('getBreweries');
 
