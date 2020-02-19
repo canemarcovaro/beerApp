@@ -68,6 +68,28 @@ class BrewerieController extends Controller
        
 
     }
+    public function deleteClapToBrewery(Request $request,$id){
+        
+        // dd($request->brewery_id);
+        $brewery = Clap::where([
+            ['user_id', '=', $request->user()->id],
+            ['brewery_id', '=', $id],
+        ])->delete();
+
+
+       
+           
+         
+   
+           $quantityClaps = Clap::where('brewery_id', '=',$id)->count();
+           return $quantityClaps;
+   
+   
+       
+          
+   
+       }
+
     public function getBestBreweries(){
 
         $breweries = Brewerie::all();
