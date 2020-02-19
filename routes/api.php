@@ -51,7 +51,7 @@ Route::get('offers/{id}','OfferController@get')->name('getOffer');
 Route::group(['middleware' => ['auth:api','scope:normal-user']], function() {
     //Rutas para las Cervecerias.
     //Dar aplauso a una cerveceria.
-    Route::post('breweriesclap/{id}','BrewerieController@addClapToBrewery')->name('addClapToBrewery');
+    Route::post('breweriesclap','BrewerieController@addClapToBrewery')->name('addClapToBrewery');
     Route::delete('breweriesclap/{id}','BrewerieController@deleteClapToBrewery')->name('deleteClapToBrewery');
     //--------------------------------------------------------------------------------------------
     //Rutas para las Ofertas.

@@ -52,14 +52,19 @@ class BrewerieController extends Controller
         return $brewery; 
     }
 
-    public function addClapToBrewery($id, Request $request){
+    public function addClapToBrewery(Request $request){
         
-        $brewery = $this->get($id);
-        $breweryClaps = $brewery->claps;
-        $brewery->claps = $breweryClaps + 1;
-        $brewery->save();
+     // dd($request->brewery_id);
+       
+        $clap = Clap::firstOrCreate(['user_id' => $request->user()->id, 'brewery_id'=> $request->brewery_id]);
         
-        return $brewery;
+      
+
+        $quantityClaps = Clap::where('brewery_id', '=',$request->brewery_id)->count();
+        return $quantityClaps;
+
+
+    
        
 
     }
