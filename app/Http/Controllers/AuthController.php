@@ -56,6 +56,9 @@ class AuthController extends Controller
            $token->scopes = ['brewery-owner'];
   
           }
+        else{
+            $token->scopes = ['normal-user'];
+        }
         $token->save();
 
         return response()->json([
