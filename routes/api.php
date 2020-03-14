@@ -14,9 +14,9 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-//Rutas de auth para el brewery owner.
+//Rutas de auth.
 Route::group(['prefix' => 'auth'], function () {
-    Route::post('login', 'AuthController@login');
+    Route::post('login', 'AuthController@login');   
     Route::post('sociallogin', 'AuthController@socialLogin');
     Route::post('signup', 'AuthController@signup');
   
