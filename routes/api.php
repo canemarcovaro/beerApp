@@ -34,7 +34,7 @@ Route::group(['middleware' => ['auth:api','scope:brewery-owner']], function() {
 Route::post('breweries','BrewerieController@add')->name('addBreweries');
 //Edit de la cerveceria del brewery owner.
 Route::post('breweries/{id}','BrewerieController@edit')->name('editBreweries');
-//--------------------------------------------------------------------------------------------
+
 //Rutas para las Ofertas.
 //Alta de oferta de una cerveceria (por el momento numero indeterminado).
 Route::post('offers','OfferController@add')->name('addOffer');
