@@ -21,13 +21,12 @@ class BrewerieController extends Controller
     $userBrewery = Brewerie::where('user_id',$user->id)->first();
     
     if($userBrewery){
-        return "ERROR: SOLO PUEDE CREAR UNA CERCERIA POR CUENTA.";
+        return "ERROR: SOLO PUEDE CREAR UNA CERVECERIA POR CUENTA.";
      }
    
     $brewery = new Brewerie;
     $brewery->name = $request->name;
     $brewery->user_id = $user->id;
-    $brewery->claps  = 0;
     $brewery->save();
 
     return $brewery;

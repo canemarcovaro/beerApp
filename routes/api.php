@@ -28,7 +28,7 @@ Route::group(['prefix' => 'auth'], function () {
 });
 
 //Rutas de brewery owner.
-Route::group(['middleware' => ['auth:api','scope:brewery-owner']], function() {
+Route::group(['middleware' => ['auth:api','scope:brewery-owner','cors']], function() {
 //Rutas para las Cervecerias.
 //ALTA de una cerveceria x brewery owner.
 Route::post('breweries','BrewerieController@add')->name('addBreweries');
@@ -49,7 +49,7 @@ Route::get('offers/{id}','OfferController@get')->name('getOffer');
 });
 
 //Rutas de normal User.
-Route::group(['middleware' => ['auth:api','scope:normal-user']], function() {
+Route::group(['middleware' => ['auth:api','scope:normal-user','cors']], function() {
     //Rutas para las Cervecerias.
     //Dar aplauso a una cerveceria.
     Route::post('breweriesclap','BrewerieController@addClapToBrewery')->name('addClapToBrewery');
@@ -61,6 +61,8 @@ Route::group(['middleware' => ['auth:api','scope:normal-user']], function() {
     
     });
 
+
+Route::group(['middleware' => ['cors']], function () {
 //Rutas de usuario sin rol. 
 //Listado de todas las cervecerias.
 Route::get('breweries','BrewerieController@getAll')->name('getAllBreweries');
@@ -69,3 +71,5 @@ Route::get('bestbreweries','BrewerieController@getBestBre weries')->name('getBes
 Route::get('breweries/{id}','BrewerieController@get')->name('getBreweries');
 
 Route::get('offersByBrewery/{id}','OfferController@getOffersByBrewery')->name('getAllOffersByBrewery');
+
+});
