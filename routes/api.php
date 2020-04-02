@@ -29,8 +29,9 @@ Route::group(['prefix' => 'auth'], function () {
 
 //Rutas de brewery owner.
 Route::group(['middleware' => ['auth:api','scope:brewery-owner']], function() {
-    
- Route::resource('photo','PhotoController');
+
+Route::resource('photo','PhotoController');
+Route::get('images','PhotoController@index')->name('getAllImages');
 //Rutas para las Cervecerias.
 //ALTA de una cerveceria x brewery owner.
 Route::post('breweries','BrewerieController@add')->name('addBreweries');

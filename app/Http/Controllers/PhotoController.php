@@ -12,9 +12,14 @@ class PhotoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index( Request $request)
     {
-        //
+        $user = $request->user();
+        $userBrewery = Brewerie::where('user_id',$user->id)->first();
+
+        $images = $userBrewery->getMedia();
+        $publicUrl = $images[0]->getFullUrl();
+        return $publicUrl;
     }
 
     /**
