@@ -5,13 +5,18 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Brewerie;
 use App\Clap;
+use Illuminate\Support\Facades\DB;
 
 class BrewerieController extends Controller
 {
     public function getAll(){
        
-        $breweries = Brewerie::all();
-        return $breweries; 
+        
+
+        return $breweries2 =  Brewerie::join('claps', 'breweries.id', '=', 'claps.brewery_id')->select('breweries.name','breweries.id','breweries.lat','breweries.lon',DB::raw("count(claps.id) as clapsCuantity"))->groupBy('breweries.id')->get();
+     
+     
+        return $breweries2; 
     }
 
     public function add(Request $request){
