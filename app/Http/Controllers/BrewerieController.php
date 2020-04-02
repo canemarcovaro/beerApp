@@ -11,7 +11,7 @@ class BrewerieController extends Controller
     public function getAll(){
        
         $breweries = Brewerie::all();
-        return $breweries;
+        return $breweries; 
     }
 
     public function add(Request $request){
@@ -95,4 +95,6 @@ class BrewerieController extends Controller
         $breweries = $breweries->sortByDesc('claps');
         return $breweries;
     }
+
+  
 }
