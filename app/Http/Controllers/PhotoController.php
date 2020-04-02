@@ -18,8 +18,13 @@ class PhotoController extends Controller
         $userBrewery = Brewerie::where('user_id',$user->id)->first();
 
         $images = $userBrewery->getMedia();
-        $publicUrl = $images[0]->getFullUrl();
-        return $publicUrl;
+        
+        for ($i=0; $i <$images->count() ; $i++) { 
+            $publicUrls[] = $images[$i]->getFullUrl();
+        }
+
+        
+        return $publicUrls;
     }
 
     /**
