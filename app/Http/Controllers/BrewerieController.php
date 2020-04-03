@@ -13,10 +13,23 @@ class BrewerieController extends Controller
        
         
 
-        return $breweries2 =  Brewerie::join('claps', 'breweries.id', '=', 'claps.brewery_id')->select('breweries.name','breweries.id','breweries.lat','breweries.lon',DB::raw("count(claps.id) as clapsCuantity"))->groupBy('breweries.id')->get();
-     
-     
-        return $breweries2; 
+      $breweries =  Brewerie::join('claps', 'breweries.id', '=', 'claps.brewery_id')->select('breweries.name','breweries.id','breweries.lat','breweries.lon',DB::raw("count(claps.id) as clapsCuantity"))->groupBy('breweries.id')->get();
+        
+    /*  $photo = $breweries[0]->getMedia();
+     return  $img = $photo[0]->getFullUrl();*/
+      
+        for ($i=0; $i <$breweries->count(); $i++) {
+
+          for ($j=0; $j <$breweries[$i]->getMedia()->count(); $j++) { 
+           $imgUrl = $breweries[$i]["media"][$j]->getFullUrl();
+           //dd($breweries[$i]["media"][0]["id"]);
+
+           $breweries[$i]["media"][$j]["imgUrl"] = $imgUrl;
+           
+          }
+        }
+
+        return $breweries; 
     }
 
     public function add(Request $request){
